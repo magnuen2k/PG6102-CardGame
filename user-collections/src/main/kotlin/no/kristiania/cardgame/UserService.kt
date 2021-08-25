@@ -37,14 +37,18 @@ class UserService(
 
     fun registerNewUser(userId: String) : Boolean {
 
+        // Check if user already exists
         if(userRepository.existsById(userId)) {
             return false
         }
 
+        // Create new user obj
         val user = User()
         user.userId = userId
         user.cardPacks = 3
         user.coins = 100
+
+        // Add to userRepository
         userRepository.save(user)
 
         return true
