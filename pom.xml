@@ -80,39 +80,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <!--
-                Own modules used in other modules
-            -->
-            <dependency>
-                <groupId>org.tsdes.advanced</groupId>
-                <artifactId>data-format</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.tsdes.advanced</groupId>
-                <artifactId>example-news</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.tsdes.advanced.rest</groupId>
-                <artifactId>rest-dto</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.tsdes.advanced.rest</groupId>
-                <artifactId>rest-exception</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.tsdes.advanced.graphql</groupId>
-                <artifactId>graphql-dto</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.tsdes.advanced.rest</groupId>
-                <artifactId>rest-gui-v1</artifactId>
-                <version>${project.version}</version>
-            </dependency>
 
             <!-- Kotlin dependencies -->
             <dependency>
@@ -146,54 +113,6 @@
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-boot-starter</artifactId>
                 <version>${version.springfox}</version>
-            </dependency>
-
-
-            <!--  GraphQL -->
-            <dependency>
-                <groupId>com.graphql-java</groupId>
-                <artifactId>graphql-spring-boot-starter</artifactId>
-                <version>${version.graphql-spring}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.graphql-java</groupId>
-                <artifactId>graphiql-spring-boot-starter</artifactId>
-                <version>${version.graphql-spring}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.graphql-java</groupId>
-                <artifactId>voyager-spring-boot-starter</artifactId>
-                <version>${version.graphql-spring}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.graphql-java</groupId>
-                <artifactId>graphql-java-tools</artifactId>
-                <version>${version.graphql-java-tools}</version>
-            </dependency>
-
-
-            <!-- Misc -->
-            <dependency>
-                <groupId>com.netflix.hystrix</groupId>
-                <artifactId>hystrix-core</artifactId>
-                <version>1.5.12</version>
-            </dependency>
-            <dependency>
-                <groupId>io.reactivex</groupId>
-                <artifactId>rxjava</artifactId>
-                <version>1.2.2</version>
-            </dependency>
-            <dependency>
-                <groupId>org.evomaster</groupId>
-                <artifactId>evomaster-client-java-controller</artifactId>
-                <version>1.0.1</version>
-                <scope>test</scope>
-                <exclusions>
-                    <exclusion>
-                        <groupId>javax.validation</groupId>
-                        <artifactId>validation-api</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
 
         </dependencies>
