@@ -21,6 +21,7 @@ class CardService {
 
     private val lock = Any()
 
+    // Running when app i starting up
     @PostConstruct
     fun init(){
 
@@ -34,6 +35,7 @@ class CardService {
 
     fun isInitialized() = cardCollection.isNotEmpty()
 
+    // Will implement fetching of data later
     protected fun fetchData(){
         //TODO
     }
@@ -49,6 +51,7 @@ class CardService {
         }
     }
 
+    // Find the mill value of a card
     fun millValue(cardId: String) : Int {
         verifyCollection()
         val card : Card = cardCollection.find { it.cardId  == cardId} ?:
@@ -57,6 +60,7 @@ class CardService {
         return collection!!.millValues[card.rarity]!!
     }
 
+    // Return price of the card
     fun price(cardId: String) : Int {
         verifyCollection()
         val card : Card = cardCollection.find { it.cardId  == cardId} ?:
@@ -73,6 +77,7 @@ class CardService {
 
         verifyCollection()
 
+        // List to return
         val selection = mutableListOf<Card>()
 
         val probabilities = collection!!.rarityProbabilities
@@ -81,8 +86,12 @@ class CardService {
         val gold = probabilities[Rarity.GOLD]!!
         //val pink = probabilities[Rarity.PINK_DIAMOND]!!
 
+        // Run "n" times
         repeat(n) {
+            // Get a number between 0 and 1
             val p = Math.random()
+
+            // Check for rarity
             val r = when{
                 p <= bronze -> Rarity.BRONZE
                 p > bronze && p <= bronze + silver -> Rarity.SILVER
@@ -90,7 +99,11 @@ class CardService {
                 p > bronze + silver + gold -> Rarity.PINK_DIAMOND
                 else -> throw IllegalStateException("BUG for p=$p")
             }
+
+            // Draw card with rarity
             val card = collection!!.cardsByRarity[r].let{ it!![Random.nextInt(it.size)] }
+
+            // Add card to selection
             selection.add(card)
         }
 
