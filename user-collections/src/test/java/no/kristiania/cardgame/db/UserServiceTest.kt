@@ -2,8 +2,6 @@ package no.kristiania.cardgame.db
 
 import no.kristiania.cardgame.CardService
 import no.kristiania.cardgame.FakeData
-import no.kristiania.cardgame.UserRepository
-import no.kristiania.cardgame.UserService
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

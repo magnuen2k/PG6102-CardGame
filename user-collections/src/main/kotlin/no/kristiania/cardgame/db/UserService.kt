@@ -1,5 +1,6 @@
-package no.kristiania.cardgame
+package no.kristiania.cardgame.db
 
+import no.kristiania.cardgame.CardService
 import org.springframework.data.jpa.repository.Lock
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository

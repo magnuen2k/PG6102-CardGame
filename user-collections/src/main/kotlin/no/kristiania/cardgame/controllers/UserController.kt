@@ -1,7 +1,7 @@
 package no.kristiania.cardgame.controllers
 
-import no.kristiania.cardgame.User
-import no.kristiania.cardgame.UserRepository
+import no.kristiania.cardgame.db.User
+import no.kristiania.cardgame.db.UserRepository
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping

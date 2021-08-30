@@ -1,5 +1,6 @@
-package no.kristiania.cardgame
+package no.kristiania.cardgame.db
 
+import no.kristiania.cardgame.db.CardCopy
 import javax.persistence.*
 import javax.validation.constraints.Min
 import javax.validation.constraints.NotBlank

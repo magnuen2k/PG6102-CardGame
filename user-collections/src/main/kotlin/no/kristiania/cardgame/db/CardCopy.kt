@@ -1,4 +1,4 @@
-package no.kristiania.cardgame
+package no.kristiania.cardgame.db
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
