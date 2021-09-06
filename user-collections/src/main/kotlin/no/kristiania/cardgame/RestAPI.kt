@@ -32,4 +32,10 @@ class RestAPI (private val userService: UserService) {
 
         return ResponseEntity.status(201).build()
     }
+
+    @ApiOperation("Update a users collection")
+    @PatchMapping("/{userId}")
+    fun patchCollection(@PathVariable("userId") userId: String) : ResponseEntity<String> {
+        return ResponseEntity.ok(userId)
+    }
 }
