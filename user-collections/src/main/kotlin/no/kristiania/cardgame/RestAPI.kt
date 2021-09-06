@@ -6,6 +6,7 @@ import no.kristiania.cardgame.dto.CardCommand
 import no.kristiania.cardgame.dto.PatchResultDto
 import no.kristiania.cardgame.dto.PatchUserDto
 import no.kristiania.cardgame.dto.UserDto
+import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -37,7 +38,10 @@ class RestAPI (private val userService: UserService) {
     }
 
     @ApiOperation("Update a users collection")
-    @PatchMapping("/{userId}")
+    @PatchMapping(
+            path = ["/{userId}"],
+            consumes = [(MediaType.APPLICATION_JSON_VALUE)]
+    )
     fun patchCollection(@PathVariable("userId") userId: String, @RequestBody patchUserDto: PatchUserDto) : ResponseEntity<PatchResultDto> {
 
         if(patchUserDto.command == null) {
