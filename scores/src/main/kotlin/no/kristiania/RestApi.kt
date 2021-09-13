@@ -1,15 +1,23 @@
 package no.kristiania
 
+import io.swagger.annotations.Api
 import no.kristiania.db.UserStats
 import no.kristiania.db.UserStatsRepository
 import no.kristiania.db.UserStatsService
 import no.kristiania.dto.UserStatsDto
+import org.springframework.http.CacheControl
+import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import java.util.concurrent.TimeUnit
 
+@Api(value = "/api/scores", description = "Scores and ranks of the players, based on their victories and defeats")
+@RequestMapping(
+        path = ["/api/scores"],
+        produces = [(MediaType.APPLICATION_JSON_VALUE)]
+)
 @RestController
-@RequestMapping("/api/scores")
-class RestAPI (
+class RestApi (
         private val statsRepository: UserStatsRepository,
         private val statsService: UserStatsService
 ) {
@@ -38,8 +46,8 @@ class RestAPI (
             @RequestParam("keysetId", required = false)
             keysetId: String?,
             @RequestParam("keysetScore", required = false)
-            keysetScore: String?
-    ) {
+            keysetScore: Int?
+    ): ResponseEntity<WrappedResponse<PageDto<UserStatsDto>>> {
         val page = PageDto<UserStatsDto>()
 
         val n = 10
@@ -50,5 +58,10 @@ class RestAPI (
             val last = scores.last()
             page.next = "/api/scores?keysetId=${last.userId}&keysetScore=${last.score}"
         }
+
+        return ResponseEntity
+                .status(200)
+                .cacheControl(CacheControl.maxAge(1, TimeUnit.MINUTES).cachePublic())
+                .body(WrappedResponse(200, page).validated())
     }
 }

@@ -1,6 +1,5 @@
 package no.kristiania.db
 
-import no.kristiania.dto.UserStatsDto
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 import org.springframework.stereotype.Service
@@ -18,8 +17,9 @@ class UserStatsService(
         val em: EntityManager
 ) {
 
-    fun createUser(userId: String) : Boolean {
-        if(repository.existsById(userId)) {
+    fun createUser(userId: String) : Boolean{
+
+        if(repository.existsById(userId)){
             return false
         }
 
@@ -28,7 +28,8 @@ class UserStatsService(
         return true
     }
 
-    fun getNextPage(size: Int, keysetId: String?, keysetScore: String?) : List<UserStats> {
+    fun getNextPage(size: Int, keysetId: String? = null, keysetScore: Int? = null): List<UserStats>{
+
         if (size < 1 || size > 1000) {
             throw IllegalArgumentException("Invalid size value: $size")
         }
