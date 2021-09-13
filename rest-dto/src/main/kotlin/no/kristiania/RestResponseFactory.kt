@@ -1,8 +1,7 @@
-package org.tsdes.advanced.rest.dto
+package no.kristiania
 
 import org.springframework.http.ResponseEntity
 import java.net.URI
-
 
 object RestResponseFactory {
 

@@ -1,12 +1,9 @@
-package org.tsdes.advanced.rest.dto
+package no.kristiania
 
 import io.swagger.annotations.ApiModel
 import io.swagger.annotations.ApiModelProperty
 import org.jetbrains.annotations.NotNull
 
-/**
- * Created by arcuri82 on 09-Aug-19.
- */
 @ApiModel(description = "Paginated list of resources")
 class PageDto<T>(
 

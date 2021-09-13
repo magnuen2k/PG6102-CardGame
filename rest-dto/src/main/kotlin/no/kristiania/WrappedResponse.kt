@@ -1,12 +1,7 @@
-package org.tsdes.advanced.rest.dto
+package no.kristiania
 
 import io.swagger.annotations.ApiModelProperty
 
-/**
- * Wrapper DTO for REST responses.
- *
- * Somehow based on JSend : https://labs.omniti.com/labs/jsend
- */
 open class WrappedResponse<T>(
 
         @ApiModelProperty("The HTTP status code of the response")
@@ -69,7 +64,3 @@ open class WrappedResponse<T>(
         SUCCESS, FAIL, ERROR
     }
 }
-
-
-
-

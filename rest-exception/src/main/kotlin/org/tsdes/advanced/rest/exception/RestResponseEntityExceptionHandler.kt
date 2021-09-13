@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.context.request.WebRequest
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
-import org.tsdes.advanced.rest.dto.WrappedResponse
+import no.kristiania.WrappedResponse
 import javax.validation.ConstraintViolationException
 
 
@@ -117,7 +117,7 @@ class RestResponseEntityExceptionHandler : ResponseEntityExceptionHandler() {
     ) : ResponseEntity<Any> {
 
         val dto = WrappedResponse<Any>(
-                code  = status.value(),
+                code = status.value(),
                 message = ex.message
         ).validated()
 
