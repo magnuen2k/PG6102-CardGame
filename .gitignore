@@ -1,3 +1,4 @@
 # Project exclude paths
 /cards-dto/target/
 /user-collections/target/
+*.iml
