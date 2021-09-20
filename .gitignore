@@ -2,3 +2,6 @@
 /cards-dto/target/
 /user-collections/target/
 *.iml
+
+/.idea
+*/target
