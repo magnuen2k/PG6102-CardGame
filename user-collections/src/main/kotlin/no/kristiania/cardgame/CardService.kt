@@ -56,7 +56,7 @@ class CardService (
 
     protected fun fetchData(){
 
-        val version = "1_000"
+        val version = "v1_000"
         val uri = UriComponentsBuilder
                 .fromUriString("http://${cardServiceAddress.trim()}/api/cards/collection_$version")
                 .build().toUri()
