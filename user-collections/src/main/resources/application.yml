@@ -9,10 +9,14 @@ spring:
   jpa:
     #database: postgresql
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
   mvc:
     throw-exception-if-no-handler-found: true
   resources:
     add-mappings: false
 
-  #cardServiceAddress: "card-service:8080"
+server:
+  port: 8081
+
+# Should be card-service instead of localhost
+cardServiceAddress: "localhost:8080"
