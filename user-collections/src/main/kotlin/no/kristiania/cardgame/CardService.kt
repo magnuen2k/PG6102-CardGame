@@ -26,8 +26,8 @@ class CardService (
 
     protected var collection: Collection? = null
 
-    @Value("\${cardServiceAddres}")
-    private lateinit var cardServiceAddres: String
+    @Value("\${cardServiceAddress}")
+    private lateinit var cardServiceAddress: String
 
     private lateinit var cb: CircuitBreaker
 
@@ -58,7 +58,7 @@ class CardService (
 
         val version = "1_000"
         val uri = UriComponentsBuilder
-                .fromUriString("http://${cardServiceAddres.trim()}/api/cards/collection_$version")
+                .fromUriString("http://${cardServiceAddress.trim()}/api/cards/collection_$version")
                 .build().toUri()
 
         val response = cb.run(

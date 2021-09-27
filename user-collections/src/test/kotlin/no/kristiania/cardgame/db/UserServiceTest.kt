@@ -15,11 +15,12 @@ import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import no.kristiania.cardgame.model.Collection
 import org.junit.jupiter.api.Assertions.*
+import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreakerFactory
 
 @Profile("UserServiceTest")
 @Primary
 @Service
-class FakeCardService : CardService(){
+class FakeCardService : CardService(Resilience4JCircuitBreakerFactory()){
 
     override fun fetchData() {
         val dto = FakeData.getCollectionDto()
