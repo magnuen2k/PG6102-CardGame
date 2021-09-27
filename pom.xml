@@ -126,6 +126,14 @@
                 <version>28.1-jre</version>
             </dependency>
 
+            <dependency>
+                <!-- to mock web services -->
+                <groupId>com.github.tomakehurst</groupId>
+                <artifactId>wiremock-standalone</artifactId>
+                <version>2.27.2</version>
+                <scope>test</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
