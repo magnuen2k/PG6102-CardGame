@@ -1,14 +1,24 @@
 spring:
-  application:
-    name: scores
-  datasource:
-    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
-    driver-class-name: org.h2.Driver
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-    show-sql: true
   mvc:
-    throw-exception-if-no-handler-found: true
+    throwExceptionIfNoHandlerFound: true
   resources:
     add-mappings: false
+  application:
+    name: scores-service
+  session:
+    store-type: none
+  datasource:
+    url: "jdbc:postgresql://postgres-scores:5432/postgres"
+    username: "postgres"
+    password: ""
+    driver-class-name: "org.postgresql.Driver"
+  jpa:
+    database: "postgresql"
+    hibernate:
+      ddl-auto: validate
+  cloud:
+    consul:
+      host: discovery
+      port: 8500
+      discovery:
+        instanceId: ${spring.application.name}:${random.value}

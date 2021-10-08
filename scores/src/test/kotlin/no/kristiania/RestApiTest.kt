@@ -2,7 +2,7 @@ package no.kristiania
 
 import io.restassured.RestAssured
 import io.restassured.http.ContentType
-import io.restassured.mapper.TypeRef
+import io.restassured.common.mapper.TypeRef
 import no.kristiania.db.UserStatsRepository
 import org.hamcrest.CoreMatchers
 import org.junit.jupiter.api.Assertions
