@@ -13,25 +13,25 @@ class UserStats(
     @ApiModelProperty("User id")
     @Id
     @NotBlank
-    val userId: String? = null,
+    var userId: String? = null,
 
     @ApiModelProperty("Victories for user")
     @NotNull
     @Min(0)
-    val victories: Int = 0,
+    var victories: Int = 0,
 
     @ApiModelProperty("Defeats for user")
     @NotNull
     @Min(0)
-    val defeats: Int = 0,
+    var defeats: Int = 0,
 
     @ApiModelProperty("Draws")
     @NotNull
     @Min(0)
-    val draws: Int = 0,
+    var draws: Int = 0,
 
     @ApiModelProperty("Score")
     @NotNull
     @Min(0)
-    val score: Int = 0
+    var score: Int = 0
 )
