@@ -1,4 +1,4 @@
-package no.kristiania.cardgame.model
+package no.kristiania.cardgame.usercollections.model
 
 import no.kristiania.cardgame.CollectionDto
 import no.kristiania.cardgame.Rarity

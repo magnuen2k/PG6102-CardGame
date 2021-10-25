@@ -11,8 +11,13 @@ services:
     depends_on:
       - discovery
 
+  redis:
+    image: "redis:latest"
+
   discovery:
-    image: "consul:1.8"
+    image: "consul"
+    ports:
+      - "8500:8500"
     environment:
       - CONSUL_LOCAL_CONFIG={"log_level":"info"}
 
@@ -25,6 +30,20 @@ services:
     image: "postgres:10"
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
+
+  postgres-auth:
+    image: "postgres:10"
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+
+  auth:
+    build:
+      context: ./auth
+      dockerfile: Dockerfile
+    depends_on:
+      - api-gateway
+      - redis
+      - postgres-auth
 
   cards_0:
     build:
@@ -50,7 +69,7 @@ services:
       - api-gateway
       - discovery
       - postgres-user-collections
-
+      - auth
 
   scores:
     build:
@@ -60,9 +79,3 @@ services:
       - api-gateway
       - discovery
       - postgres-scores
-
-
-
-
-
-

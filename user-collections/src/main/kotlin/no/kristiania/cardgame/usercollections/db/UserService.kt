@@ -1,6 +1,6 @@
-package no.kristiania.cardgame.db
+package no.kristiania.cardgame.usercollections.db
 
-import no.kristiania.cardgame.CardService
+import no.kristiania.cardgame.usercollections.CardService
 import org.springframework.data.jpa.repository.Lock
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
@@ -20,8 +20,8 @@ interface UserRepository : CrudRepository<User, String> {
 @Service
 @Transactional
 class UserService(
-        private val userRepository: UserRepository,
-        private val cardService: CardService
+    private val userRepository: UserRepository,
+    private val cardService: CardService
 ) {
     companion object {
         const val CARDS_PER_PACK = 5

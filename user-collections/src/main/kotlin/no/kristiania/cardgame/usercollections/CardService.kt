@@ -1,11 +1,13 @@
-package no.kristiania.cardgame
+package no.kristiania.cardgame.usercollections
 
 import no.kristiania.WrappedResponse
+import no.kristiania.cardgame.CollectionDto
+import no.kristiania.cardgame.Rarity
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import javax.annotation.PostConstruct
-import no.kristiania.cardgame.model.Card
-import no.kristiania.cardgame.model.Collection
+import no.kristiania.cardgame.usercollections.model.Card
+import no.kristiania.cardgame.usercollections.model.Collection
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreakerFactory
 import org.springframework.cloud.client.circuitbreaker.CircuitBreaker

@@ -11,8 +11,11 @@ spring:
       discovery:
         locator:
           enabled: true
-          lowerCaseServiceId: true
       routes:
+        - id: Auth
+          uri: http://auth:8080
+          predicates:
+            - Path=/api/auth/**
         - id: Cards
           uri: lb://cards-service
           predicates:
@@ -25,3 +28,4 @@ spring:
           uri: lb://user-collections-service
           predicates:
             - Path=/api/user-collections/**
+

@@ -1,7 +1,9 @@
-package no.kristiania.cardgame.db
+package no.kristiania.cardgame.usercollections.db
 
-import no.kristiania.cardgame.CardService
-import no.kristiania.cardgame.FakeData
+import no.kristiania.cardgame.usercollections.CardService
+import no.kristiania.cardgame.usercollections.FakeData
+import no.kristiania.cardgame.usercollections.db.UserRepository
+import no.kristiania.cardgame.usercollections.db.UserService
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -13,7 +15,7 @@ import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Service
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.junit.jupiter.SpringExtension
-import no.kristiania.cardgame.model.Collection
+import no.kristiania.cardgame.usercollections.model.Collection
 import org.junit.jupiter.api.Assertions.*
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreakerFactory
 import org.springframework.web.client.RestTemplate
@@ -82,10 +84,10 @@ internal class UserServiceTest{
         val cardId = "c09"
         userService.registerNewUser(userId)
 
-        val e = Assertions.assertThrows(IllegalArgumentException::class.java) {
+        val e = assertThrows(IllegalArgumentException::class.java){
             userService.buyCard(userId, cardId)
         }
-        Assertions.assertTrue(e.message!!.contains("coin"), "Wrong error message: ${e.message}")
+        assertTrue(e.message!!.contains("coin"), "Wrong error message: ${e.message}")
     }
 
 
@@ -106,7 +108,7 @@ internal class UserServiceTest{
         val after = userService.findByIdEager(userId)!!
         assertEquals(totPacks - 1, after.cardPacks)
         assertEquals(totCards + UserService.CARDS_PER_PACK,
-                after.ownedCards.sumBy { it.numberOfCopies }  )
+            after.ownedCards.sumBy { it.numberOfCopies }  )
     }
 
     @Test
@@ -123,9 +125,9 @@ internal class UserServiceTest{
         }
 
         val after = userService.findByIdEager(userId)!!
-        Assertions.assertEquals(0, after.cardPacks)
+        assertEquals(0, after.cardPacks)
 
-        Assertions.assertThrows(IllegalArgumentException::class.java) {
+        assertThrows(IllegalArgumentException::class.java){
             userService.openPack(userId)
         }
     }
