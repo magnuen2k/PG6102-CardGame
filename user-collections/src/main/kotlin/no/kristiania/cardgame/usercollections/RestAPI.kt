@@ -1,13 +1,13 @@
-package no.kristiania.cardgame
+package no.kristiania.cardgame.usercollections
 
 import io.swagger.annotations.ApiOperation
 import no.kristiania.RestResponseFactory
 import no.kristiania.WrappedResponse
-import no.kristiania.cardgame.db.UserService
-import no.kristiania.cardgame.dto.CardCommand
-import no.kristiania.cardgame.dto.PatchResultDto
-import no.kristiania.cardgame.dto.PatchUserDto
-import no.kristiania.cardgame.dto.UserDto
+import no.kristiania.cardgame.usercollections.db.UserService
+import no.kristiania.cardgame.usercollections.dto.CardCommand
+import no.kristiania.cardgame.usercollections.dto.PatchResultDto
+import no.kristiania.cardgame.usercollections.dto.PatchUserDto
+import no.kristiania.cardgame.usercollections.dto.UserDto
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*

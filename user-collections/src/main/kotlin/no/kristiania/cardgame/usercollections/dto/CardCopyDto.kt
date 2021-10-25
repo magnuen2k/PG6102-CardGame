@@ -1,7 +1,7 @@
-package no.kristiania.cardgame.dto
+package no.kristiania.cardgame.usercollections.dto
 
 import io.swagger.annotations.ApiModelProperty
-import no.kristiania.cardgame.db.User
+import no.kristiania.cardgame.usercollections.db.User
 
 data class CardCopyDto(
         @get:ApiModelProperty("")

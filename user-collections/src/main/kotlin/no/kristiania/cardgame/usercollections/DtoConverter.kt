@@ -1,9 +1,9 @@
-package no.kristiania.cardgame
+package no.kristiania.cardgame.usercollections
 
-import no.kristiania.cardgame.db.CardCopy
-import no.kristiania.cardgame.db.User
-import no.kristiania.cardgame.dto.CardCopyDto
-import no.kristiania.cardgame.dto.UserDto
+import no.kristiania.cardgame.usercollections.db.CardCopy
+import no.kristiania.cardgame.usercollections.db.User
+import no.kristiania.cardgame.usercollections.dto.CardCopyDto
+import no.kristiania.cardgame.usercollections.dto.UserDto
 
 object DtoConverter {
 
