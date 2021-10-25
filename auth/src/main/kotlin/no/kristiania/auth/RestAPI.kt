@@ -1,6 +1,8 @@
 package no.kristiania.auth
 
 import no.kristiania.auth.db.UserService
+import org.springframework.amqp.core.FanoutExchange
+import org.springframework.amqp.rabbit.core.RabbitTemplate
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.security.authentication.AuthenticationManager
@@ -21,7 +23,9 @@ import java.security.Principal
 class RestAPI(
     private val service: UserService,
     private val authenticationManager: AuthenticationManager,
-    private val userDetailsService: UserDetailsService
+    private val userDetailsService: UserDetailsService,
+    private val rabbit: RabbitTemplate,
+    private val fanout: FanoutExchange
 ) {
 
     @RequestMapping("/user")
@@ -54,6 +58,8 @@ class RestAPI(
         if (token.isAuthenticated) {
             SecurityContextHolder.getContext().authentication = token
         }
+
+        rabbit.convertAndSend(fanout.name, "", userId)
 
         return ResponseEntity.status(201).build()
     }
