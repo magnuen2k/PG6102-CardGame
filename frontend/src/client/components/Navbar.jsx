@@ -14,6 +14,9 @@ const Navbar = () => {
       <div className={"nav-element"}>
         <Link to={"/auth"}>Authenticate</Link>
       </div>
+      <div className={"nav-element"}>
+        <Link to={"/collection"}>Collection</Link>
+      </div>
       <div className={"nav-element"} onClick={logout}>
         Logout
       </div>
