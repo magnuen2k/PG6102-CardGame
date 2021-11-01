@@ -6,10 +6,13 @@ export const UserContext = createContext(null);
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  useEffect(async () => {
-    await axios.get("api/auth/user").then((res) => {
-      setUser(res.data);
-    });
+  useEffect(() => {
+    const fetchData = async () => {
+      await axios.get("api/auth/user").then((res) => {
+        setUser(res.data);
+      });
+    };
+    fetchData();
   }, []);
 
   return (
