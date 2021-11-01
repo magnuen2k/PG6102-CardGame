@@ -5,7 +5,7 @@ const Home = () => {
   const { user } = useContext(UserContext);
 
   return (
-    <div>
+    <div className={"container"}>
       <h1>Home</h1>
       {user ? <div>Welcome, {user.name}</div> : <div>Not logged in</div>}
     </div>

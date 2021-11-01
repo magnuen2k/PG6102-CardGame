@@ -73,7 +73,8 @@ const Auth = () => {
   };
 
   return (
-    <>
+    <div className={"container"}>
+      <h1>Authentication</h1>
       {user ? (
         <div>Already logged in</div>
       ) : (
@@ -96,7 +97,7 @@ const Auth = () => {
           </button>
         </>
       )}
-    </>
+    </div>
   );
 };
 
