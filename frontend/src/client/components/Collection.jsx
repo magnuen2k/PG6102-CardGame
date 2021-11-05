@@ -1,11 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
+import { UserContext } from "../contexts/UserContext";
+import { useHistory } from "react-router";
 
 const Collection = () => {
   const [collection, setCollection] = useState([]);
+  const [userStats, setUserStats] = useState([]);
+
+  const { user, setUser } = useContext(UserContext);
+
+  const history = useHistory();
 
   useEffect(() => {
     fetchCollection();
+    fetchUserStats();
   }, []);
 
   const fetchCollection = async () => {
@@ -30,6 +38,35 @@ const Collection = () => {
     setCollection(payload);
   };
 
+  const fetchUserStats = async () => {
+    const url = await Promise.all("/api/user-collections/" + user.name);
+    console.log("test");
+    let res;
+
+    try {
+      res = await axios.get(url);
+    } catch (e) {
+      console.log(e);
+    }
+
+    if (res.status === 401) {
+      setUser(null);
+      history.push("/");
+    }
+
+    if (res.status === 404) {
+      console.log("Something went wrong");
+    }
+
+    if (res.status !== 200) {
+      console.log("Something went wrong");
+    }
+
+    const payload = await res.data.data;
+    console.log(payload);
+    setUserStats(payload);
+  };
+
   if (!collection.cards) {
     return <div>Loading...</div>;
   }
@@ -37,6 +74,9 @@ const Collection = () => {
   return (
     <div className={"container"}>
       <h1>Collection</h1>
+      {/*<div>
+        <p>Coins: {userStats.coins}</p>
+      </div>*/}
       <div className="card-container">
         {collection.cards.map((c) => (
           <div key={c.cardId}>
