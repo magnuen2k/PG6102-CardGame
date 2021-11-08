@@ -23,6 +23,7 @@
         <module>cards</module>
         <module>api-gateway</module>
         <module>auth</module>
+        <module>frontend</module>
     </modules>
     <properties>
         <version.kotlin>1.5.31</version.kotlin>
