@@ -1,9 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
+import { UserContext } from "../contexts/UserContext";
 
 const Navbar = () => {
-  const logout = () => {
-    console.log("Should logout");
+  const history = useHistory();
+
+  const { user, setUser } = useContext(UserContext);
+
+  const logout = async () => {
+    if (user) {
+      const res = await axios.post("/api/auth/logout");
+      console.log(res);
+      history.push("/");
+      setUser(null);
+    }
   };
 
   return (
