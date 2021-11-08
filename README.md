@@ -1,3 +1,3 @@
-[![Build Status](https://app.travis-ci.com/magnuen2k/PG6102-CardGame.svg?token=RyFpxMnNcb9XSq9pMsLe&branch=master)](https://app.travis-ci.com/magnuen2k/PG6102-CardGame)
+[![CI](https://github.com/magnuen2k/PG6102-CardGame/actions/workflows/ci.yml/badge.svg)](https://github.com/magnuen2k/PG6102-CardGame/actions/workflows/ci.yml)
 
 Simple card game made in the course "Testing, Security and Development of Enterprise Systems"
