@@ -39,8 +39,7 @@ const Collection = () => {
   };
 
   const fetchUserStats = async () => {
-    const url = await Promise.all("/api/user-collections/" + user.name);
-    console.log("test");
+    const url = "/api/user-collections/" + user.name;
     let res;
 
     try {
@@ -67,19 +66,24 @@ const Collection = () => {
     setUserStats(payload);
   };
 
-  if (!collection.cards) {
+  if (!user) {
+    return <div>Not logged in</div>;
+  }
+
+  if (!collection.cards || !userStats) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className={"container"}>
       <h1>Collection</h1>
-      {/*<div>
+      <div>
         <p>Coins: {userStats.coins}</p>
-      </div>*/}
+        <p>Packs: {userStats.cardPacks}</p>
+      </div>
       <div className="card-container">
         {collection.cards.map((c) => (
-          <div key={c.cardId}>
+          <div className={"card " + c.rarity} key={c.cardId}>
             <div>{c.name}</div>
             <img
               style={{ width: "10rem" }}
