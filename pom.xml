@@ -24,6 +24,7 @@
         <module>api-gateway</module>
         <module>auth</module>
         <module>frontend</module>
+        <module>e2e-tests</module>
     </modules>
     <properties>
         <version.kotlin>1.5.31</version.kotlin>
@@ -103,7 +104,6 @@
                 <artifactId>kotlin-reflect</artifactId>
                 <version>${version.kotlin}</version>
             </dependency>
-
 
             <!-- Spring Cloud BOM -->
             <dependency>
